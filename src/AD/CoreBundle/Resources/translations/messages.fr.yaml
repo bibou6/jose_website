@@ -1,0 +1,48 @@
+website:
+  name: Joe
+menu:
+  home: Accueil
+  oil: Huile
+  mix: Mixte media
+  drawing: Dessin
+  contact: Contact
+  language: Langues
+name: Template_FR
+
+
+art:
+  medium:
+    oil: Huile
+    mix: Mixte Media
+    drawing: Dessin
+  labels:
+    title: Titre
+    price: Prix
+    height: Hauteur
+    width: Largeur
+    dimensions: Dimensions
+    medium: Médium
+    available: Disponible
+    mediums:
+      Oil: Huile
+      Mix: Mixte Media
+      Drawing: Dessin
+    availability:
+      yes: Oui
+      no: Non
+      
+mail:
+  labels:
+    name: Nom
+    form: Formulaire de contact
+    phone: Téléphone
+    email: E-mail
+    object: Objet
+    body: Message
+    opened: Lu
+    sent: Message envoyé !
+    
+common:
+  labels:
+  actions:
+    submit: Envoyer

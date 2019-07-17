@@ -1,0 +1,113 @@
+easy_admin:
+    site_name: 'Joe Website'
+    design:
+        brand_color: '#1ABC9C'
+        color_scheme: 'dark'
+        assets:
+            favicon: '/assets/backend/favicon.png'
+            css:
+                #look here to find the ids for the css: https://symfony.com/doc/current/bundles/EasyAdminBundle/book/design-configuration.html
+                # HTTP protocol-relative URL
+                #- '//example.org/css/admin1.css'
+            js:
+                #Same as css
+    entities:
+         # List the entity class name you want to manage
+        Art:
+            class: 'AD\CoreBundle\Entity\Art'
+            form:
+                fields:
+                    - { property: 'title' }
+                    - { property: 'available' }
+                    - { property: 'height' }
+                    - { property: 'width' }
+                    - { property: 'price', type: 'money', type_options: { currency: 'CAD' } }
+                    - { property: 'medium', type: 'choice', type_options: { choices : { 'Oil' : 'Oil', 'Mixte Media' : 'Mix', 'Drawing': 'Drawing' } } }
+                    - { property: 'imageFile', type: 'vich_image' }
+            list:
+                actions: 
+                    - { name: 'show', icon: 'search', label: false }
+                    - { name: 'edit', icon: 'pencil', label: false }  
+                    - { name: 'delete', icon: 'trash', label: false }
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.art_images%', label: 'Images' }
+                    - { property: 'title' }
+                    - { property: 'medium' }
+                    - { property: 'available' }
+                    - { property: 'size' }
+                    - { property: 'price'}
+        Mail:
+            class: 'AD\CoreBundle\Entity\Mail'
+            controller: AD\CoreBundle\Controller\AdminController
+            list:
+                sort: ['opened', 'ASC']
+                actions:
+                    - { name: 'show', icon: 'search', label: false }
+                    - { name: '-edit'}  
+                    - { name: 'delete', icon: 'trash', label: false }
+                fields:
+                    - { property: 'date'}
+                    - { property: 'name'}
+                    - { property: 'phone' }
+                    - { property: 'email' }
+                    - { property: 'object' }
+                    - { property: 'opened' }
+            show:
+                fields:
+                    - { property: 'date'}
+                    - { property: 'name'}
+                    - { property: 'phone' }
+                    - { property: 'email' }
+                    - { property: 'object' }
+                    - { property: 'body', template: 'mail/body.html.twig' }
+
+        HomePage:
+            class: AD\CoreBundle\Entity\HomePage
+            translation_domain: 'admin'
+            form:
+                fields:
+                    - { property: 'mainImageFile', type: 'vich_image', label: 'property.mainImageFile' }
+                    - { property: 'secondaryImageFile', type: 'vich_image', label: 'property.secondaryImageFile' }
+                    - { property: 'mainTextFr', type: 'fos_ckeditor', label: 'property.mainTextFr' }
+                    - { property: 'mainTextEn', type: 'fos_ckeditor', label: 'property.mainTextEn' }
+            list:
+                title: homepage.list.label
+                max_results: '10'
+                actions:
+                    - { name: 'show', icon: 'search', label: false }
+                    - { name: 'edit', icon: 'pencil', label: false }  
+                    - { name: 'delete', icon: 'trash', label: false }
+                fields:
+                    - { property: 'enabled', label: 'property.enabled' }
+                    - { property: 'mainImage', type: 'image', base_path: '%app.path.home_images%', label: 'property.mainImage' }
+                    - { property: 'secondaryImage', type: 'image', base_path: '%app.path.home_images%', label: 'property.secondaryImage' }
+                    - { property: 'mainTextFr', label: 'property.mainTextFr'}
+                    - { property: 'mainTextEn', label: 'property.mainTextEn'}
+
+        User:
+            class: AD\UserBundle\Entity\User
+            translation_domain: 'user'
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image', label: 'property.imageFile' }
+                    - { property: 'username', label: 'property.username' }
+                    - { property: 'email', label: 'property.email' }
+            list:
+                title: user.list.label
+                max_results: '10'
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.user_images%', label: 'property.image' }
+                    - { property: 'id', label: 'property.id' }
+                    - { property: 'username', label: 'property.username' }
+                    - { property: 'email', label: 'property.email' }
+                    - { property: 'roles', label: 'property.roles' }
+                    - { property: 'enabled', type: 'boolean', label: 'property.enabled' }
+            show:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.user_images%' }
+            search: #https://symfony.com/doc/current/bundles/EasyAdminBundle/book/list-search-show-configuration.html
+                fields:
+                    - { property: 'username', label: 'property.username' }
+                    - { property: 'email', label: 'property.email' }
+                   
+                   

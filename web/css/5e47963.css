@@ -1,2 +1,38 @@
-@charset "ISO-8859-1";body{background-image:url('../bundles/core/img/bg.jpg')}#test{padding:10px;border:1px black solid}
-@charset "ISO-8859-1";.test{padding:10px}
+body {
+    background-color: #dedfe0;
+}
+
+@font-face {
+    font-family: bosthonbrush;
+    src: url(../../bundles/core/font/BOSTHONBRUSH.otf);
+}
+
+h1{
+	font-family: "bosthonbrush", Helvetica, Arial, sans-serif;
+}
+
+
+.btn-primary{
+	background-color: #343a40 !important;
+	color: white;
+	border: 1px solid black;
+}
+
+.btn-primary:hover{
+	background-color: #22262b !important;
+	color: white;
+	border: 1px solid black;
+}
+
+.flag-menu{
+	width: 1.5em;
+	height: 1.5em;
+}
+
+.dropdown-menu{
+	min-width: 0px!important;
+}
+
+.nav-item{
+	padding: 0px 2em;	
+}

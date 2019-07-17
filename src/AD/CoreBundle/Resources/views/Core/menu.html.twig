@@ -1,14 +1,49 @@
-{% extends 'CoreBundle:Core:layout.html.twig' %}
- 
+{% extends 'CoreBundle:Core:base.html.twig' %}
+
 {% block menu %}
-	<header>
-		<div id="menu">
-			<ul>
-				<li><a href=""></a></li>
-				<li><a href=""></a></li>
-				<li><a href=""></a></li>
-				<li><a href=""></a></li>
-			</ul>
-		</div>
-	</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+	<a class="navbar-brand" href="#">{{ 'website.name' |trans|upper }}</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarNav" aria-controls="navbarNav"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse justify-content-md-center"
+		id="navbarNav">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="{{ path('core_homepage') }}">{{ 'menu.home' | trans }}</a></li>
+			<li class="nav-item"><a class="nav-link" href="{{ path('oil_art_list') }}">{{ 'menu.oil' | trans }}</a></li>
+			<li class="nav-item"><a class="nav-link" href="{{ path('mix_art_list') }}">{{ 'menu.mix' | trans }}</a></li>
+			<li class="nav-item"><a class="nav-link" href="{{ path('drawing_art_list') }}">{{ 'menu.drawing' | trans }}</a></li>
+			<li class="nav-item"><a class="nav-link" href="{{ path('contact_homepage') }}">{{ 'menu.contact' | trans }}</a></li>
+		</ul>
+	</div>
+	<div class="form-inline"
+		id="navbarNavLanguage">
+		<ul class="navbar-nav">
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#"
+				id="navbarDropdownLanguage" role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false"> {% if(app.request.locale == 'fr') %}
+					<img class="flag-menu"
+					src="{{ asset("bundles/core/img/flags/french.png") }}" alt="FR" />
+					{% elseif(app.request.locale == 'en')  %} <img class="flag-menu"
+					src="{{ asset("bundles/core/img/flags/english.png") }}" alt="EN" />
+					{% endif %}
+			</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item"
+						href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({ _locale: 'fr' })) }}"><img
+						class="flag-menu"
+						src="{{ asset("bundles/core/img/flags/french.png") }}" alt="FR" /></a>
+					<a class="dropdown-item"
+						href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({ _locale: 'en' })) }}"><img
+						class="flag-menu"
+						src="{{ asset("bundles/core/img/flags/english.png") }}" alt="EN" /></a>
+				</div></li>
+		</ul>
+	</div>
+</nav>
 {% endblock %}
+
+

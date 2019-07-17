@@ -1,0 +1,13 @@
+
+.flag-menu{
+	width: 1.5em;
+	height: 1.5em;
+}
+
+.dropdown-menu{
+	min-width: 0px!important;
+}
+
+.nav-item{
+	padding: 0px 2em;	
+}

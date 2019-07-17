@@ -1,0 +1,38 @@
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+    filter_sets:
+        cache: ~
+        # the name of the "filter set"
+        my_thumb:
+            # adjust the image quality to 75%
+            quality: 75
+            # list of transformations to apply (the "filters")
+            filters:
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                thumbnail: { size: [120, 90], mode: outbound }
+                # create a 2px black border: center the thumbnail on a black background
+                # 4px larger to create a 2px border around the final image
+                background: { size: [124, 94], position: center, color: '#0000FF' }
+        art_list_crop:
+            filters:
+                # use and setup the "crop" filter
+                scale:
+                    # input 1200x1600px -> output 750x1000px (relative down-scale)
+                    dim: [ 500, 500 ]
+                crop:
+                    # set the size of the cropping area
+                    size: [ 300, 300 ]
+                    # set the starting coordinates of the crop
+                    start: [ 000, 000 ]
+        art_list_thumbnail:
+            filters:
+                thumbnail:
+
+                    # set the thumbnail size to "32x32" pixels
+                    size: [300, 300]
+
+                    # crop the input image, if required
+                    mode: outbound

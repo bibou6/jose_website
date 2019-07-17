@@ -1,0 +1,19 @@
+homepage:
+  list:
+    label: Liste des pages d'accueil
+property:
+  mainImage: Image Principale
+  secondaryImage: Image Secondaire
+  mainImageFile: Image Principale
+  secondaryImageFile: Image Secondaire
+  mainTextFr: Texte d'accueil en français
+  mainTextEn: Texte d'accueil en anglais
+  enabled: Activé
+  
+action:
+  new: Ajouter
+  save: Sauvegarder
+  edit: Modifier
+  delete: supprimer
+  list: Retour à la liste
+ 

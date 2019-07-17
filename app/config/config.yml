@@ -2,9 +2,10 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: easy_admin_config.yml }
-    - { resource: liip_imagine_config.yml }
-    - { resource: vich_uploader_config.yml }
+    - { resource: packages/easy_admin_config.yml }
+    - { resource: packages/liip_imagine_config.yml }
+    - { resource: packages/vich_uploader_config.yml }
+    - { resource: packages/ckeditor_config.yml }
     - { resource: "@CoreBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
 
@@ -14,6 +15,8 @@ parameters:
     locale: fr
     version: 1.0
     app.path.user_images: /uploads/images/users
+    app.path.art_images: /uploads/images/arts
+    app.path.home_images: /uploads/images/home
 
 framework:
     #esi: ~
@@ -44,6 +47,7 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes: ['bootstrap_4_layout.html.twig','@FOSCKEditor/Form/ckeditor_widget.html.twig']
 
 # Doctrine Configuration
 doctrine:

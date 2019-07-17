@@ -22,7 +22,7 @@ class User extends BaseUser
 	protected $id;
 	
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", length=255, nullable=true)
 	 * @var string
 	 */
 	private $image;
@@ -40,6 +40,13 @@ class User extends BaseUser
 	private $updatedAt;
 	
 	// ...
+	
+	
+	public function __construct(){
+		$this->updatedAt = new \Datetime("now");
+		
+		parent::__construct();
+	}
 	
 	public function setImageFile(File $image = null)
 	{

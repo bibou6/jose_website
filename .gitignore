@@ -7,6 +7,10 @@
 # Email spool folder
 /app/spool/*
 
+#Production
+/app/config/production/*
+
+
 # Cache, session files and logs (Symfony3)
 /var/cache/*
 /var/logs/*

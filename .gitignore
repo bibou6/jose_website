@@ -9,6 +9,9 @@
 
 #Production
 /app/config/production/*
+/web/media/*
+/web/css/*
+/web/js/*
 
 
 # Cache, session files and logs (Symfony3)

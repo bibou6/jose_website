@@ -24,7 +24,7 @@ class MailType extends AbstractType
 		))
 		->add('phone',null, array(
 				"label" => "mail.labels.phone",
-				"required" => true
+				"required" => false
 		))
 		->add('email',null, array(
 				"label" => "mail.labels.email",

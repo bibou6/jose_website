@@ -20,8 +20,8 @@ var dropzoneHomePageSecondary = new Dropzone("#homepage-secondary-image", {
 
 
 dropzoneHomePageSecondary.on("addedfile", function(origFile) {
-	var MAX_WIDTH = 700;
-	var MAX_HEIGHT = 700;
+	var MAX_WIDTH = 500;
+	var MAX_HEIGHT = 500;
 
 	var reader = new FileReader();
 
@@ -57,15 +57,16 @@ dropzoneHomePageSecondary.on("addedfile", function(origFile) {
 				// Resize & rotate
 				
 				var degree = 0;
+				alert(orientation);
 				switch (orientation) {
 					case 3:
 						degree = 180;
 						break;
 					case 6:
-						degree = -90;
+						degree = 90;
 						break;
 					case 8:
-						degree = 90;
+						degree = -90;
 						break;
 				}
 

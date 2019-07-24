@@ -50,10 +50,10 @@ dropzone.on("addedfile", function(origFile) {
 						degree = 180;
 						break;
 					case 6:
-						degree = -90;
+						degree = 90;
 						break;
 					case 8:
-						degree = 90;
+						degree = -90;
 						break;
 				}
 

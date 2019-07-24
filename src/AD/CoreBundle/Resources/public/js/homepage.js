@@ -57,7 +57,6 @@ dropzoneHomePageSecondary.on("addedfile", function(origFile) {
 				// Resize & rotate
 				
 				var degree = 0;
-				alert(orientation);
 				switch (orientation) {
 					case 3:
 						degree = 180;

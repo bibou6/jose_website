@@ -1,0 +1,38 @@
+{% extends '@EasyAdmin/default/edit.html.twig' %}
+
+{% block content_title %}
+        {# ... customize the content title ... #}
+    {% trans_default_domain "CoreBundle" %}
+    <div class="row">
+    	<div class="col-md-6 text-center">
+    
+            <h1>Image de background</h1>
+            {% if form.vars.value.mainImage %}
+            	<a href="#" class="easyadmin-thumbnail" data-featherlight="#easyadmin-lightbox-{{ form.vars.value.id }}" data-featherlight-close-on-click="anywhere">
+                	<img src="{{ vich_uploader_asset(form.vars.value,'mainImageFile') }}" style="width: 150px;height:150px;">
+            	</a>
+            {% endif %}
+            <form id="homepage-main-image" action="{{ path('homepage_main_image_upload', { 'id': form.vars.value.id }) }}" class="dropzone" method="post" enctype="multipart/form-data">
+                  <div class="dz-message" data-dz-message><span>{{ 'dropzone.upload.message'|trans({},'admin') }}</span></div>
+                  <div class="fallback">
+                    <input name="file" type="file" multiple />
+                  </div>
+            </form>
+        </div>
+        <div class="col-md-6 text-center">
+    
+            <h1>Image de Texte</h1>
+            {% if form.vars.value.secondaryImage %}
+            	<a href="#" class="easyadmin-thumbnail" data-featherlight="#easyadmin-lightbox-{{ form.vars.value.id }}" data-featherlight-close-on-click="anywhere">
+                	<img src="{{ vich_uploader_asset(form.vars.value,'secondaryImageFile') }}" style="width: 150px;height:150px;">
+            	</a>
+            {% endif %}
+            <form id="homepage-secondary-image" action="{{ path('homepage_secondary_image_upload', { 'id': form.vars.value.id }) }}" class="dropzone" method="post" enctype="multipart/form-data">
+                  <div class="dz-message" data-dz-message><span>{{ 'dropzone.upload.message'|trans({},'admin') }}</span></div>
+                  <div class="fallback">
+                    <input name="file" type="file" multiple />
+                  </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

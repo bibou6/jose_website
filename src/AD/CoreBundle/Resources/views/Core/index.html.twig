@@ -27,14 +27,14 @@
 	<div class="row fixed-bottom">
 	{% if page is not null %}
 		{% if page.secondaryImage is not null %}
-		<div class="offset-lg-4 offset-md-0 col-lg-3 col-md-6 col-sm-12 bg-shadowed">
-			<img src="{{ vich_uploader_asset(page,'secondaryImageFile') | imagine_filter('art_list_thumbnail') }}" class="w-100" />
+		<div class="offset-lg-3 offset-md-0 col-lg-4 col-md-12 col-sm-12 bg-shadowed pl-5 py-5 text-center">
+			<img src="{{ vich_uploader_asset(page,'secondaryImageFile') }}" style="max-height: 300px" class="mw-100" />
 		</div>
-		<div class="col-lg-3 col-md-6 col-sm-12  bg-shadowed p-5">
+		<div class="col-lg-5 col-md-12 col-sm-12  bg-shadowed p-5">
 			{{ page.mainText(app.request.getLocale())|raw }}
 		</div>
 		{% else %}
-		<div class="offset-lg-7 offset-md-0 col-lg-3 col-md-6 col-sm-12  bg-shadowed p-5">
+		<div class="offset-lg-7 offset-md-0 col-lg-5 col-md-12  bg-shadowed p-5">
 			{{ page.mainText(app.request.getLocale())|raw }}
 		</div>
 		{% endif %}

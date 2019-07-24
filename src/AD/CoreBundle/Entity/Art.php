@@ -23,6 +23,12 @@ class Art
 	private $id;
 	
 	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 * @var \DateTime
+	 */
+	private $uploadedAt;
+	
+	/**
 	 * @ORM\Column(type="string", length=255)
 	 */
 	private $title;
@@ -72,6 +78,7 @@ class Art
 	private $updatedAt;
 	
 	public function __construct(){
+		$this->uploadedAt = new \Datetime('now');
 		$this->updatedAt = new \Datetime('now');
 		$this->available = false;
 	}
@@ -209,5 +216,29 @@ class Art
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * Set uploadedAt.
+     *
+     * @param \DateTime|null $uploadedAt
+     *
+     * @return Art
+     */
+    public function setUploadedAt($uploadedAt = null)
+    {
+        $this->uploadedAt = $uploadedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get uploadedAt.
+     *
+     * @return \DateTime|null
+     */
+    public function getUploadedAt()
+    {
+        return $this->uploadedAt;
     }
 }

@@ -28,6 +28,26 @@ drawing_art_list:
 art_view:
   path: /{_locale}/art/{id}/view
   defaults: { _controller: 'CoreBundle:Art:view' }
+  
+art_image_upload:
+    path:     /upload/art/{id}/image
+    defaults: { _controller: 'CoreBundle:Art:uploadArtImage' }
+    requirements:
+        id: \d+
+
+
+homepage_main_image_upload:
+    path:     /upload/homepage/{id}/main
+    defaults: { _controller: 'CoreBundle:Core:uploadHomePageMainImage' }
+    requirements:
+        id: \d+
+        
+homepage_secondary_image_upload:
+    path:     /upload/homepage/{id}/secondary
+    defaults: { _controller: 'CoreBundle:Core:uploadHomePageSecondaryImage' }
+    requirements:
+        id: \d+
+
 
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"

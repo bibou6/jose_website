@@ -6,15 +6,18 @@ easy_admin:
         assets:
             favicon: '/assets/backend/favicon.png'
             css:
-                #look here to find the ids for the css: https://symfony.com/doc/current/bundles/EasyAdminBundle/book/design-configuration.html
-                # HTTP protocol-relative URL
-                #- '//example.org/css/admin1.css'
+                - '/bundles/core/css/dropzone.css'
             js:
-                #Same as css
+                - '/bundles/core/js/dropzone.js'
+                - '/bundles/core/js/main.js'
+                - '/bundles/core/js/art.js'
+                - '/bundles/core/js/homepage.js'
     entities:
          # List the entity class name you want to manage
         Art:
             class: 'AD\CoreBundle\Entity\Art'
+            templates:
+                edit: '@Core/templates/art/edit.html.twig'
             form:
                 fields:
                     - { property: 'title' }
@@ -64,10 +67,10 @@ easy_admin:
         HomePage:
             class: AD\CoreBundle\Entity\HomePage
             translation_domain: 'admin'
+            templates:
+                edit: '@Core/templates/homepage/edit.html.twig'
             form:
                 fields:
-                    - { property: 'mainImageFile', type: 'vich_image', label: 'property.mainImageFile' }
-                    - { property: 'secondaryImageFile', type: 'vich_image', label: 'property.secondaryImageFile' }
                     - { property: 'mainTextFr', type: 'fos_ckeditor', label: 'property.mainTextFr' }
                     - { property: 'mainTextEn', type: 'fos_ckeditor', label: 'property.mainTextEn' }
             list:

@@ -16,4 +16,8 @@ action:
   edit: Modifier
   delete: supprimer
   list: Retour à la liste
+  
+dropzone:
+  upload:
+    message: Clique ici pour changer la photo 
  

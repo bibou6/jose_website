@@ -1,6 +1,58 @@
-core_homepage:
+core_homepage_without_local:
     path:     /
     defaults: { _controller: CoreBundle:Core:index }
+    
+core_homepage:
+    path:     /{_locale}/
+    defaults: { _controller: CoreBundle:Core:indexWithLocale }
+    requirements:
+      _locale: en|fr
+
+
+contact_homepage:
+    path: /{_locale}/contact
+    defaults: { _controller: 'CoreBundle:Mail:index' }
+
+oil_art_list:
+  path: /{_locale}/art/oil/list
+  defaults: { _controller: 'CoreBundle:Art:listOil' }
+  
+mix_art_list:
+  path: /{_locale}/art/mix/list
+  defaults: { _controller: 'CoreBundle:Art:listMix' }
+  
+drawing_art_list:
+  path: /{_locale}/art/drawing/list
+  defaults: { _controller: 'CoreBundle:Art:listDrawing' }
+  
+art_view:
+  path: /{_locale}/art/{id}/view
+  defaults: { _controller: 'CoreBundle:Art:view' }
+  
+art_image_upload:
+    path:     /upload/art/{id}/image
+    defaults: { _controller: 'CoreBundle:Art:uploadArtImage' }
+    requirements:
+        id: \d+
+
+
+homepage_main_image_upload:
+    path:     /upload/homepage/{id}/main
+    defaults: { _controller: 'CoreBundle:Core:uploadHomePageMainImage' }
+    requirements:
+        id: \d+
+        
+homepage_secondary_image_upload:
+    path:     /upload/homepage/{id}/secondary
+    defaults: { _controller: 'CoreBundle:Core:uploadHomePageSecondaryImage' }
+    requirements:
+        id: \d+
+
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin
 
 #USER SECTION
 
@@ -26,4 +78,8 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+    
+    
+    
+
     

@@ -1,0 +1,15 @@
+{% extends 'CoreBundle:Core:menu.html.twig' %}
+
+{% block body %}
+<div class="container">
+	<h1 class="text-center display-4 text-underlign pt-5">{{ title }}</h1>
+	<div class="row py-5">
+    {% for art in arts %}
+    	<div class="col-lg-4 col-md-6 col-sm-12 text-center">
+			<a href="{{ path('art_view', {'id':art.id}) }}"><img class="pt-5" class="img-responsive" src="{{ vich_uploader_asset(art,'imageFile') | imagine_filter('art_list_thumbnail') }}" alt="{{ art.title }}" /></a>
+		</div>
+    {% endfor %}
+	</div>
+</div>
+
+{% endblock %}

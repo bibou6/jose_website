@@ -1,14 +1,47 @@
 {# src/OC/PlatformBundle/Resources/views/Advert/index.html.twig #}
 
-{% extends "CoreBundle:Core:layout.html.twig" %}
+{% extends "CoreBundle:Core:menu.html.twig" %}
 
 {% block title %}{{ parent() }} - Index{% endblock %}
 
+{% block custom_css %}
+	{% if page is not null and page.mainImage is not null %}
+		body{
+			background-image: url("{{ vich_uploader_asset(page,'mainImageFile') }}"); 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+		}
+		.bg-shadowed{
+			background-color: rgba(0,0,0,0.7);
+			color: white;
+		}
+		
+		
+	{% endif %}
+{% endblock %}
+
 {% block body %}
-  Notre plateforme est un peu vide pour le moment, mais cela viendra !
-  <div id="test">
-  	toto
-  </div>
-  {{ 'test'|trans }}
+<div class="content">
+	<div class="row fixed-bottom">
+	{% if page is not null %}
+		{% if page.secondaryImage is not null %}
+		<div class="offset-lg-3 offset-md-0 col-lg-4 col-md-12 col-sm-12 bg-shadowed pl-5 py-5 text-center">
+			<img src="{{ vich_uploader_asset(page,'secondaryImageFile') }}" style="max-height: 300px" class="mw-100" />
+		</div>
+		<div class="col-lg-5 col-md-12 col-sm-12  bg-shadowed p-5">
+			{{ page.mainText(app.request.getLocale())|raw }}
+		</div>
+		{% else %}
+		<div class="offset-lg-7 offset-md-0 col-lg-5 col-md-12  bg-shadowed p-5">
+			{{ page.mainText(app.request.getLocale())|raw }}
+		</div>
+		{% endif %}
+	{% endif %}
+		
+	</div>
+</div>
+  
   
 {% endblock %}

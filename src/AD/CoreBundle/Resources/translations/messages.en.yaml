@@ -1,0 +1,49 @@
+website:
+  name: Joe
+menu:
+  home: Home
+  oil: Oil
+  mix: Mix Media
+  drawing: Drawing
+  contact: Contact
+  language: Languages
+name: Template_EN
+
+art:
+  medium:
+    oil: Oil
+    mix: Mix Media
+    drawing: Drawing
+  labels:
+    title: Title
+    price: Price
+    height: Height
+    width: Width
+    dimensions: Dimensions
+    medium: Medium
+    available: Available
+    mediums:
+      Oil: Oil
+      Mix: Mix Media
+      Drawing: Drawing
+    availability:
+      yes: Yes
+      no: No
+      
+mail:
+  labels:
+    name: Name
+    form: Contact form
+    phone: Phone
+    email: Email
+    object: Object
+    body: Message
+    opened: Read
+    sent: Message sent !
+    
+    
+    
+common:
+  labels:
+  actions:
+    submit: Send

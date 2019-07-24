@@ -1,0 +1,25 @@
+body {
+    background-color: #dedfe0;
+}
+
+@font-face {
+    font-family: bosthonbrush;
+    src: url(../../bundles/core/font/BOSTHONBRUSH.otf);
+}
+
+h1{
+	font-family: "bosthonbrush", Helvetica, Arial, sans-serif;
+}
+
+
+.btn-primary{
+	background-color: #343a40 !important;
+	color: white;
+	border: 1px solid black;
+}
+
+.btn-primary:hover{
+	background-color: #22262b !important;
+	color: white;
+	border: 1px solid black;
+}

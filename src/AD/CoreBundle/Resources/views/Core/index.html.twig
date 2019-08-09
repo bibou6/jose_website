@@ -14,7 +14,7 @@
             background-size: cover;
 		}
 		.bg-shadowed{
-			background-color: rgba(0,0,0,0.7);
+			background-color: rgba(0,0,0,0.6);
 			color: white;
 		}
 		
@@ -24,24 +24,25 @@
 
 {% block body %}
 <div class="content">
-	<div class="row fixed-bottom">
-	{% if page is not null %}
-		{% if page.secondaryImage is not null %}
-		<div class="offset-lg-3 offset-md-0 col-lg-4 col-md-12 col-sm-12 bg-shadowed pl-5 py-5 text-center">
-			<img src="{{ vich_uploader_asset(page,'secondaryImageFile') }}" style="max-height: 300px" class="mw-100" />
-		</div>
-		<div class="col-lg-5 col-md-12 col-sm-12  bg-shadowed p-5">
-			{{ page.mainText(app.request.getLocale())|raw }}
-		</div>
-		{% else %}
-		<div class="offset-lg-7 offset-md-0 col-lg-5 col-md-12  bg-shadowed p-5">
-			{{ page.mainText(app.request.getLocale())|raw }}
+	<div class="row">
+		{% if page is not null %}
+		<div class="col-lg-7  col-md-12">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-lg-7 col-md-12  bg-shadowed text-justify">
+            			{{ page.mainText(app.request.getLocale())|raw }}
+            		</div>
+        		    {% if page.secondaryImage is not null %}
+            		<div class="col-lg-5 col-md-12 bg-shadowed text-center">
+            			<img src="{{ vich_uploader_asset(page,'secondaryImageFile') | imagine_filter('homepage_secondary') }}"  class="mw-100"/>
+            		</div>
+            		{% endif %}
+        		</div>
+        	</div>
 		</div>
 		{% endif %}
-	{% endif %}
-		
 	</div>
-</div>
+	</div>
   
   
 {% endblock %}

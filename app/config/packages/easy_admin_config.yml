@@ -8,6 +8,7 @@ easy_admin:
             css:
                 - '/bundles/core/css/dropzone.css'
             js:
+                - '/bundles/core/js/exif.js'
                 - '/bundles/core/js/dropzone.js'
                 - '/bundles/core/js/main.js'
                 - '/bundles/core/js/art.js'

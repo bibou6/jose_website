@@ -69,3 +69,57 @@ function base64ToFile(dataURI, origFile) {
 
 	return newFile;
 }
+
+
+
+function processImg(image, trgWidth,trgHeight, srcWidth, srcHeight, orientation){
+	
+	 	var img = new Image;
+	    img.src = image;
+	
+		var degrees = 0;
+	    if (orientation == 3) degrees=180;
+	    if (orientation == 6) degrees=90;
+	    if (orientation == 8) degrees=90;
+	    
+	    if (degrees >= 360) degrees = 0;
+
+	    
+	    var canvas = document.createElement('canvas');
+	    canvas.width = trgWidth;
+	    canvas.height = trgHeight;
+	    
+	    
+	    if (degrees === 0 || degrees === 180) {
+	        canvas.width = srcWidth;
+	        canvas.height = srcHeight;
+	    }
+	    else {
+	        // swap
+	        canvas.width = srcHeight;
+	        canvas.height = srcWidth;
+	    }
+	    
+	    
+	    
+	    
+	    var ctx = canvas.getContext("2d");
+	    
+	    if (degrees === 90 || degrees === 270) {
+	    	ctx.translate(srcHeight/2,srcWidth/2);
+	    	ctx.rotate(degrees*Math.PI/180);
+	    	ctx.drawImage(img,0,0,srcWidth,srcHeight,-srcWidth/2,-srcHeight   /2,srcWidth,srcHeight)
+	    }else{
+	    	
+	    	ctx.drawImage(img,0,0);
+	    	
+	    }
+	    
+	    console.log("Orientation: "+degrees);
+	    
+	    
+	    //
+	    
+	    return canvas.toDataURL();
+	    
+}

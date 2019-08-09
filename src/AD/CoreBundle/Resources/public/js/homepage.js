@@ -15,160 +15,105 @@ var dropzoneHomePageSecondary = new Dropzone("#homepage-secondary-image", {
 });
 
 
+var trgHeight = 200;
+var trgWidth = 200;
 
 
 
-
-dropzoneHomePageSecondary.on("addedfile", function(origFile) {
-	var MAX_WIDTH = 500;
-	var MAX_HEIGHT = 500;
-
+dropzoneHomePageSecondary.on("addedfile", function(file) {
 	var reader = new FileReader();
+    reader.onload = (function () {
+        return (function (e) {
+            var image = new Image();
+            image.onload = function () {
+                (function (file, uri) {
+                    EXIF.getData(file, function () {
+                        var imgToSend = processImg(
+                        uri,
+                        trgHeight, trgWidth,
+                        this.width, this.height,
+                        EXIF.getTag(file, 'Orientation'));
 
-	// Convert file to img
+                        console.log(imgToSend);
 
-	reader.addEventListener("load", function(event) {
-
-		var origImg = new Image();
-		origImg.src = event.target.result;
-
-		origImg.addEventListener("load", function(event) {
-
-			var width = event.target.width;
-			var height = event.target.height;
-
-			getOrientation(origFile,
-				function(orientation) {
-				// Don't resize if it's small enough
-
-				if (width > MAX_WIDTH && height > MAX_HEIGHT) {
-					if (width > height) {
-						if (width > MAX_WIDTH) {
-							height *= MAX_WIDTH / width;
-							width = MAX_WIDTH;
-						}
-					} else {
-						if (height > MAX_HEIGHT) {
-							width *= MAX_HEIGHT / height;
-							height = MAX_HEIGHT;
-						}
-					}
-				}
-				// Resize & rotate
-				
-				var degree = 0;
-				switch (orientation) {
-					case 3:
-						degree = 180;
-						break;
-					case 6:
-						degree = 90;
-						break;
-					case 8:
-						degree = -90;
-						break;
-				}
-
-				var canvas = document.createElement('canvas');
-				canvas.width = width;
-				canvas.height = height;
-
-				var ctx = canvas.getContext("2d");
-				ctx.translate(canvas.width/2, canvas.height/2);
-				ctx.rotate(Math.PI / 180 *degree);
-				
-				
-				ctx.drawImage(origImg,-width/2,-height/2, width, height);
-				
-				
-				var resizedFile = base64ToFile(canvas.toDataURL(), origFile);
-
-				// Replace original with resized
-
-				var origFileIndex = dropzoneHomePageSecondary.files.indexOf(origFile);
-				dropzoneHomePageSecondary.files[origFileIndex] = resizedFile;
-
-				// Enqueue added file manually making it available for
-				// further processing by dropzoneHomePageSecondary
-
-				dropzoneHomePageSecondary.enqueueFile(resizedFile);
-					});
-
-			
-		});
-	});
-
-	reader.readAsDataURL(origFile);
+                        console.log("Width:" +this.width);
+                        console.log("Height:" +this.height);
+                        
+                        
+                        
+                        var imgUpload = processImg(
+                                uri,
+                                this.width ,this.height ,
+                                this.width, this.height,
+                                EXIF.getTag(file, 'Orientation'));
+                       
+                        var rotatedFile = base64ToFile(imgUpload, file);
+                        
+                        var origFileIndex = dropzoneHomePageSecondary.files.indexOf(file);
+                        console.log("Index : "+origFileIndex)
+                        dropzoneHomePageSecondary.files[origFileIndex] = rotatedFile;
+                        
+                        dropzoneHomePageSecondary.enqueueFile(rotatedFile);
+                        
+                        //Promise
+                        //    .resolve($.post('http://example.com', {img: imgToSend}))
+                        //    .then(console.log('Image was sent !'));
+                    });
+                })(file, e.target.result);
+            };
+            image.src = e.target.result;
+        })
+    })(file);
+    reader.readAsDataURL(file);
 });
 
 
 
 
 
-dropzoneHomePageMain.on("addedfile", function(origFile) {
-	var MAX_WIDTH = 700;
-	var MAX_HEIGHT = 700;
+dropzoneHomePageMain.on('addedfile', function (file) {
+    var reader = new FileReader();
+    reader.onload = (function () {
+        return (function (e) {
+            var image = new Image();
+            image.onload = function () {
+                (function (file, uri) {
+                    EXIF.getData(file, function () {
+                        var imgToSend = processImg(
+                        uri,
+                        trgHeight, trgWidth,
+                        this.width, this.height,
+                        EXIF.getTag(file, 'Orientation'));
 
-	var reader = new FileReader();
+                        console.log(imgToSend);
 
-	// Convert file to img
-
-	reader.addEventListener("load", function(event) {
-
-		var origImg = new Image();
-		origImg.src = event.target.result;
-
-		origImg.addEventListener("load", function(event) {
-
-			var width = event.target.width;
-			var height = event.target.height;
-
-			getOrientation(origFile,
-				function(orientation) {
-				// Don't resize if it's small enough
-
-				
-				var degree = 0;
-				switch (orientation) {
-					case 3:
-						degree = 180;
-						break;
-					case 6:
-						degree = -90;
-						break;
-					case 8:
-						degree = 90;
-						break;
-				}
-
-				var canvas = document.createElement('canvas');
-				canvas.width = width;
-				canvas.height = height;
-
-				var ctx = canvas.getContext("2d");
-				ctx.translate(canvas.width/2, canvas.height/2);
-				ctx.rotate(Math.PI / 180 *degree);
-				
-				
-				ctx.drawImage(origImg,-width/2,-height/2, width, height);
-				
-				
-				var resizedFile = base64ToFile(canvas.toDataURL(), origFile);
-
-				// Replace original with resized
-
-				var origFileIndex = dropzoneHomePageMain.files.indexOf(origFile);
-				dropzoneHomePageMain.files[origFileIndex] = resizedFile;
-
-				// Enqueue added file manually making it available for
-				// further processing by dropzoneHomePageMain
-
-				dropzoneHomePageMain.enqueueFile(resizedFile);
-					});
-
-			
-		});
-	});
-
-	reader.readAsDataURL(origFile);
+                        console.log("Width:" +this.width);
+                        console.log("Height:" +this.height);
+                        
+                        
+                        
+                        var imgUpload = processImg(
+                                uri,
+                                this.width ,this.height ,
+                                this.width, this.height,
+                                EXIF.getTag(file, 'Orientation'));
+                       
+                        var rotatedFile = base64ToFile(imgUpload, file);
+                        
+                        var origFileIndex = dropzoneHomePageMain.files.indexOf(file);
+                        console.log("Index : "+origFileIndex)
+                        dropzoneHomePageMain.files[origFileIndex] = rotatedFile;
+                        
+                        dropzoneHomePageMain.enqueueFile(rotatedFile);
+                        
+                        //Promise
+                        //    .resolve($.post('http://example.com', {img: imgToSend}))
+                        //    .then(console.log('Image was sent !'));
+                    });
+                })(file, e.target.result);
+            };
+            image.src = e.target.result;
+        })
+    })(file);
+    reader.readAsDataURL(file);
 });

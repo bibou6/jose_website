@@ -36,3 +36,9 @@ liip_imagine:
 
                     # crop the input image, if required
                     mode: outbound
+        homepage_secondary:
+            filters:
+                # use and setup the "crop" filter
+                scale:
+                    # input 1200x1600px -> output 750x1000px (relative down-scale)
+                    dim: [ 500, 500 ]

@@ -79,6 +79,8 @@ class CoreController extends Controller
     			$home->setSecondaryImageFile($uploaded_file);
     			$em->flush();
     			
+    		}else{
+    			throw new \Exception("The File is null", 403);
     		}
     		// redirect to the 'list' view of the given entity
     		return new JsonResponse(array('success' => true));

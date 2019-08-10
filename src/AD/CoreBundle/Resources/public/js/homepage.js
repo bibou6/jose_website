@@ -15,8 +15,8 @@ var dropzoneHomePageSecondary = new Dropzone("#homepage-secondary-image", {
 });
 
 
-var trgHeight = 200;
-var trgWidth = 200;
+var maxHeight = 3000;
+var maxWidth = 3000;
 
 
 
@@ -28,22 +28,10 @@ dropzoneHomePageSecondary.on("addedfile", function(file) {
             image.onload = function () {
                 (function (file, uri) {
                     EXIF.getData(file, function () {
-                        var imgToSend = processImg(
-                        uri,
-                        trgHeight, trgWidth,
-                        this.width, this.height,
-                        EXIF.getTag(file, 'Orientation'));
 
-                        console.log(imgToSend);
-
-                        console.log("Width:" +this.width);
-                        console.log("Height:" +this.height);
-                        
-                        
-                        
-                        var imgUpload = processImg(
+                    	var imgUpload = processImg(
                                 uri,
-                                this.width ,this.height ,
+                                maxWidth , maxHeight,
                                 this.width, this.height,
                                 EXIF.getTag(file, 'Orientation'));
                        
@@ -54,10 +42,6 @@ dropzoneHomePageSecondary.on("addedfile", function(file) {
                         dropzoneHomePageSecondary.files[origFileIndex] = rotatedFile;
                         
                         dropzoneHomePageSecondary.enqueueFile(rotatedFile);
-                        
-                        //Promise
-                        //    .resolve($.post('http://example.com', {img: imgToSend}))
-                        //    .then(console.log('Image was sent !'));
                     });
                 })(file, e.target.result);
             };
@@ -79,22 +63,9 @@ dropzoneHomePageMain.on('addedfile', function (file) {
             image.onload = function () {
                 (function (file, uri) {
                     EXIF.getData(file, function () {
-                        var imgToSend = processImg(
-                        uri,
-                        trgHeight, trgWidth,
-                        this.width, this.height,
-                        EXIF.getTag(file, 'Orientation'));
-
-                        console.log(imgToSend);
-
-                        console.log("Width:" +this.width);
-                        console.log("Height:" +this.height);
-                        
-                        
-                        
                         var imgUpload = processImg(
                                 uri,
-                                this.width ,this.height ,
+                                maxWidth , maxHeight,
                                 this.width, this.height,
                                 EXIF.getTag(file, 'Orientation'));
                        
@@ -105,10 +76,6 @@ dropzoneHomePageMain.on('addedfile', function (file) {
                         dropzoneHomePageMain.files[origFileIndex] = rotatedFile;
                         
                         dropzoneHomePageMain.enqueueFile(rotatedFile);
-                        
-                        //Promise
-                        //    .resolve($.post('http://example.com', {img: imgToSend}))
-                        //    .then(console.log('Image was sent !'));
                     });
                 })(file, e.target.result);
             };

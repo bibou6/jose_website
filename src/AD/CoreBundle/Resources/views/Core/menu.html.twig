@@ -1,7 +1,7 @@
 {% extends 'CoreBundle:Core:base.html.twig' %}
 
 {% block menu %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top">
 	<a class="navbar-brand" href="#">{{ 'website.name' |trans|upper }}</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarNav" aria-controls="navbarNav"
@@ -10,7 +10,7 @@
 	</button>
 	<div class="collapse navbar-collapse justify-content-md-center"
 		id="navbarNav">
-		<ul class="navbar-nav">
+		<ul class="navbar-nav text-white">
 			<li class="nav-item"><a class="nav-link" href="{{ path('core_homepage') }}">{{ 'menu.home' | trans }}</a></li>
 			<li class="nav-item"><a class="nav-link" href="{{ path('oil_art_list') }}">{{ 'menu.oil' | trans }}</a></li>
 			<li class="nav-item"><a class="nav-link" href="{{ path('mix_art_list') }}">{{ 'menu.mix' | trans }}</a></li>

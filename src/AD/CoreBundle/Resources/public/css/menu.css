@@ -11,3 +11,15 @@
 .nav-item{
 	padding: 0px 2em;	
 }
+
+.navbar{
+	background-color: #7E2583 !important;
+}
+
+.navbar > a{
+	color: white !important;
+}
+
+.nav-item > a{
+	color: white !important;
+}

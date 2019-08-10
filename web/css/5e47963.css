@@ -1,5 +1,5 @@
 body {
-    background-color: #dedfe0;
+    background-color: #fff;
 }
 
 @font-face {
@@ -22,6 +22,10 @@ h1{
 	background-color: #22262b !important;
 	color: white;
 	border: 1px solid black;
+}
+
+.card{
+	background-color: #B6D124;
 }
 /*
  * The MIT License
@@ -424,4 +428,16 @@ h1{
 
 .nav-item{
 	padding: 0px 2em;	
+}
+
+.navbar{
+	background-color: #7E2583 !important;
+}
+
+.navbar > a{
+	color: white !important;
+}
+
+.nav-item > a{
+	color: white !important;
 }

@@ -1,5 +1,5 @@
 body {
-    background-color: #dedfe0;
+    background-color: #fff;
 }
 
 @font-face {
@@ -22,4 +22,8 @@ h1{
 	background-color: #22262b !important;
 	color: white;
 	border: 1px solid black;
+}
+
+.card{
+	background-color: #B6D124;
 }

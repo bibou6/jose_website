@@ -9,16 +9,18 @@
 				alt="{{ art.title }}" />
 		</div>
 		<div class="col-md-6 col-sm-12">
-			<div class="card bg-dark ">
+			<div class="card ">
 				<div class="card-body ">
-					<h5 class="card-title text-white">
+					<h5 class="card-title text-muted">
 						{{ art.title }}
 					</h5>
 					<div class="card-text text-dark">
 						<li class="list-group-item">{{ 'art.labels.dimensions' | trans }} : {{ art.width }}' x {{ art.height }}'</li>
 						<li class="list-group-item">{{ 'art.labels.medium' | trans }} : {{ ('art.labels.mediums.' ~ art.medium) | trans }}</li>
-						<li class="list-group-item">{{ 'art.labels.price' | trans }} : {{ art.price }}$</li>
-						<li class="list-group-item {{ art.available==true?'bg-success':'bg-danger' }}">{{ 'art.labels.available' | trans }} : {{  art.available==true?('art.labels.availability.yes' | trans):('art.labels.availability.no' | trans) }}</li>
+						{% if art.price != 0 %}
+							<li class="list-group-item">{{ 'art.labels.price' | trans }} : {{ art.price }}$</li>
+						{% endif %}
+						<li class="list-group-item">{{ 'art.labels.available' | trans }} : {{  art.available==true?('art.labels.availability.yes' | trans):('art.labels.availability.no' | trans) }}</li>
 					</div>
 				</div>
 			</div>

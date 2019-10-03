@@ -25,7 +25,25 @@ h1{
 }
 
 .card{
-	background-color: #B6D124;
+	background-color: #2b0e49;
+}
+
+
+/*
+################################ HOMEPAGE ##################################
+*/
+#homepage-btn{
+	display:none;
+}
+#picture-frame{
+	padding: 20px;
+	background-color: #000;
+	border-radius: 15px;
+	margin-bottom: 200px;
+}
+
+#picture-frame > img{
+	border-radius: 10px;
 }
 /*
  * The MIT License
@@ -431,7 +449,7 @@ h1{
 }
 
 .navbar{
-	background-color: #7E2583 !important;
+	background-color: #77222d!important;
 }
 
 .navbar > a{

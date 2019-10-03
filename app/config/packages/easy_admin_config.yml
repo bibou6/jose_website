@@ -1,8 +1,7 @@
 easy_admin:
     site_name: 'Joe Website'
     design:
-        brand_color: '#1ABC9C'
-        color_scheme: 'dark'
+        brand_color: '#77222d'
         assets:
             favicon: '/assets/backend/favicon.png'
             css:
@@ -54,7 +53,6 @@ easy_admin:
                     - { property: 'name'}
                     - { property: 'phone' }
                     - { property: 'email' }
-                    - { property: 'object' }
                     - { property: 'opened' }
             show:
                 fields:
@@ -62,7 +60,6 @@ easy_admin:
                     - { property: 'name'}
                     - { property: 'phone' }
                     - { property: 'email' }
-                    - { property: 'object' }
                     - { property: 'body', template: 'mail/body.html.twig' }
 
         HomePage:

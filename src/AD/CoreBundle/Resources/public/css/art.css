@@ -1,0 +1,10 @@
+#picture-frame{
+	padding: 20px;
+	background-color: #000;
+	border-radius: 15px;
+	margin-bottom: 200px;
+}
+
+#picture-frame > img{
+	border-radius: 10px;
+}

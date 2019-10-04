@@ -13,7 +13,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    version: 1.2.0
+    version: 1.2.1
     app.path.user_images: /uploads/images/users
     app.path.art_images: /uploads/images/arts
     app.path.home_images: /uploads/images/home
